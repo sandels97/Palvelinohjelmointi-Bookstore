@@ -6,17 +6,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.interfaces.BookRepository;
+import com.example.bookstore.interfaces.CategoryRepository;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	private BookRepository repository; 
-
+	
+	@Autowired 
+	private CategoryRepository categoryRepository;
+	
 	@RequestMapping("/index")
 	public String index() {
 		return "index";
@@ -24,12 +27,13 @@ public class BookController {
 	
 	@RequestMapping("/booklist")
 	public String booklist(Model model) {
-		model.addAttribute("books",repository.findAll());
+		model.addAttribute("books", repository.findAll());
 		return "booklist";
 	}
 	@RequestMapping(value="/add")
-	public String addStudent(Model model) {
+	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return	"addbook";
 	}
 	
