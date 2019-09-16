@@ -1,11 +1,15 @@
 package com.example.bookstore.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.interfaces.BookRepository;
@@ -30,12 +34,23 @@ public class BookController {
 		model.addAttribute("books", repository.findAll());
 		return "booklist";
 	}
+	
 	@RequestMapping(value="/add")
 	public String addBook(Model model) {
 		model.addAttribute("title","Add book");
 		model.addAttribute("book", new Book());
 		model.addAttribute("categories", categoryRepository.findAll());
 		return	"addbook";
+	}
+	
+	@RequestMapping(value="/books")
+	public @ResponseBody List<Book> getAllBooks() {
+		return(List<Book>) repository.findAll();
+	}
+	
+	@RequestMapping(value="/book/{id}")
+	public @ResponseBody Optional<Book> getBookById(@PathVariable("id") Long id) {
+		return repository.findById(id);
 	}
 	
 	@PostMapping("/save") 
