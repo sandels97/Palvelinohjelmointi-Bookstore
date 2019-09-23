@@ -18,7 +18,7 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner studentDemo(BookRepository repository, CategoryRepository categoryRepository) {
+	public CommandLineRunner bookStoreDemo(BookRepository repository, CategoryRepository categoryRepository) {
 		return (args) -> {
 			categoryRepository.save(new Category("Fact"));
 			categoryRepository.save(new Category("Fiction"));
