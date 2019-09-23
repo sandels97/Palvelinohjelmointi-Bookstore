@@ -18,7 +18,7 @@ public class Book {
 	
 	private String title, author, isbn;
 	private long year;
-	private float price;
+	private double price;
 
 	@ManyToOne
 	@JsonIgnore
@@ -26,7 +26,7 @@ public class Book {
 	private Category category;
 	
 	public Book() {}
-	public Book(String title, String author, String isbn, long year, float price, Category category) {
+	public Book(String title, String author, String isbn, long year, double price, Category category) {
 		this.title = title;
 		this.author = author;
 		this.isbn = isbn;
@@ -65,10 +65,10 @@ public class Book {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
