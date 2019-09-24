@@ -14,20 +14,21 @@ public class User {
 	@Column(name="id", nullable= false, updatable= false)
 	private long id;
 	
-	@Column(name="username", nullable= false,unique = true)
+	@Column(name="username", nullable= false, unique = true)
 	private String username;
 	
 	@Column(name="password", nullable= false)
-	private String password;
+	private String passwordHash;
 	
 	@Column(name="role", nullable= false)
 	private String role;
 
 	public User() {}
 	
-	public User(String name, String password, String role) {
-		this.username = name;
-		this.password = password;
+	public User(String username, String passwordHash, String role) {
+		super();
+		this.username = username;
+		this.passwordHash = passwordHash;
 		this.role = role;
 	}
 
@@ -43,16 +44,16 @@ public class User {
 		return username;
 	}
 
-	public void setUsername(String name) {
-		this.username = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String password) {
+		this.passwordHash = password;
 	}
 
 	public String getRole() {
