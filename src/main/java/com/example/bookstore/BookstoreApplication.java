@@ -3,6 +3,8 @@ package com.example.bookstore;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.example.bookstore.domain.Book;
@@ -13,9 +15,14 @@ import com.example.bookstore.interfaces.CategoryRepository;
 import com.example.bookstore.interfaces.UserRepository;
 
 @SpringBootApplication
-public class BookstoreApplication {
+public class BookstoreApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(BookstoreApplication.class);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
