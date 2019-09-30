@@ -15,14 +15,9 @@ import com.example.bookstore.interfaces.CategoryRepository;
 import com.example.bookstore.interfaces.UserRepository;
 
 @SpringBootApplication
-public class BookstoreApplication extends SpringBootServletInitializer {
+public class BookstoreApplication {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(BookstoreApplication.class);
-	}
-
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
